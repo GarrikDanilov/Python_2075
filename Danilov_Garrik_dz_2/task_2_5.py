@@ -26,10 +26,38 @@ print(result_1)
 
 # Функция сортировки
 def sort_prices(list_in: list):
-    pass
-    return 0
+    list_in.sort()
+    return list_in
 
 
 # Вывод результата
 print(f'Адрес исходного списка: {id(my_list)}')
-pass
+result_2 = sort_prices(my_list)
+print(f'Адрес списка, упорядоченного по возрастанию: {id(result_2)}')
+print(result_2)
+
+# b) Сортировка списка цен по убыванию
+
+
+# Функция сортировки
+def sort_price_adv(list_in: list):
+    list_out = sorted(list_in, reverse=True)
+    return list_out
+
+
+# Вывод результата
+result_3 = sort_price_adv(my_list)
+print(result_3)
+
+# Вывод цены пяти самых дорогих товаров
+
+
+# Функция сортировки и вывода цен
+def check_five_max_elements(list_in: list):
+    list_out = sorted(list_in)[-5:]
+    return list_out
+
+
+# Вывод результата
+result_4 = check_five_max_elements(my_list)
+print(result_4)
