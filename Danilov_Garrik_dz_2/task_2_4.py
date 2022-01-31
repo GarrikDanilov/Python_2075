@@ -5,7 +5,7 @@
 def convert_name_extract(list_in: list):
     list_out = []
     for string in list_in:
-        list_out.append(f'Привет, {string.split(" ")[-1].capitalize()}!')
+        list_out.append(f'Привет, {string.split(" ")[-1].title()}!')
     return list_out
 
 
