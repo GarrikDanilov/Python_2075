@@ -51,7 +51,9 @@ def get_jokes_adv(count: int, flag: int = 0) -> list:
     # Функция определения повторяющихся слов
     def check_match(word: str):
         for string in list_jokes:
-            if string.find(word) > -1:
+            if string.find(word) == -1:
+                pass
+            elif string.find(word) == 0 or string[string.find(word) - 1].isspace():
                 return False
         return True
 
