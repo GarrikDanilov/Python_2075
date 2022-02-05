@@ -4,10 +4,7 @@
 def thesaurus(*args) -> dict:
     dict_out = {}
     for name in args:
-        if name[0] in dict_out:
-            dict_out[name[0]].append(name)
-        else:
-            dict_out[name[0]] = [name]
+        dict_out.setdefault(name[0], []).append(name)
     return dict_out
 
 

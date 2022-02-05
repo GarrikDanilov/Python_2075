@@ -3,14 +3,8 @@
 
 def thesaurus_adv(*args):
     dict_out = {}
-    for first_name, last_name in map(lambda string: string.split(' '), args):
-        if last_name[0] in dict_out:
-            if first_name[0] in dict_out[last_name[0]]:
-                dict_out[last_name[0]][first_name[0]].append(f'{first_name} {last_name}')
-            else:
-                dict_out[last_name[0]].update({first_name[0]: [f'{first_name} {last_name}']})
-        else:
-            dict_out[last_name[0]] = {first_name[0]: [f'{first_name} {last_name}']}
+    for first_name, last_name in map(lambda name: name.split(' '), args):
+        dict_out.setdefault(last_name[0], {}).setdefault(first_name[0], []).append(f'{first_name} {last_name}')
     return dict_out
 
 
@@ -24,8 +18,8 @@ my_dict = thesaurus_adv('Иван Сергеев', 'Инна Серова', 'П�
 
 
 def dict_sorted(dict_in: dict):
-    for key in sorted(dict_in):
-        print(f"'{key}':", dict_in[key])
+    for first_key in sorted(dict_in):
+        print(f"'{first_key}':", dict_in[first_key])
 
 
 for key in sorted(my_dict):

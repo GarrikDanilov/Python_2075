@@ -43,17 +43,17 @@ def get_jokes_adv(count: int, flag: int = 0) -> list:
         return []
     if not flag:
         return get_jokes(count)
-    min_count = min((len(nouns), len(adverbs), len(adjectives)))
+    min_count = min(len(nouns), len(adverbs), len(adjectives))
     if min_count < count:
         print(f'Количество шуток должно быть не более {min_count}')
         return []
 
     # Функция определения повторяющихся слов
     def check_match(word: str):
-        for string in list_jokes:
-            if string.find(word) == -1:
+        for str_jokes in list_jokes:
+            if str_jokes.find(word) == -1:
                 pass
-            elif string.find(word) == 0 or string[string.find(word) - 1].isspace():
+            elif str_jokes.find(word) == 0 or str_jokes[str_jokes.find(word) - 1].isspace():
                 return False
         return True
 
