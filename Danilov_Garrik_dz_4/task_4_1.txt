@@ -1,0 +1,32 @@
+# Задание 1
+
+1. Проверить, установлен ли пакет pillow в глобальном окружении.
+d:\My_Python>pip show pillow
+WARNING: Package(s) not found: pillow
+
+2. Установить самую свежую версию pillow, если ранее она не была установлена.
+d:\My_Python>pip install pillow
+Collecting pillow
+  Using cached Pillow-9.0.1-cp310-cp310-win_amd64.whl (3.2 MB)
+Installing collected packages: pillow
+Successfully installed pillow-9.0.1
+
+3. Создать и активировать виртуальное окружение. Убедиться, что в нем нет пакета pillow.
+d:\My_Python>python -m venv lesson_04_virt
+
+d:\My_Python>"lesson_04_virt/Scripts/activate.bat"
+
+(lesson_04_virt) d:\My_Python>pip show pillow
+WARNING: Package(s) not found: pillow
+
+4. Установить в виртуальное окружение pillow версии 7.1.1 (или другой, отличной от самой свежей).
+(lesson_04_virt) d:\My_Python>pip install pillow==8.3.2
+Collecting pillow==8.3.2
+  Downloading Pillow-8.3.2-cp310-cp310-win_amd64.whl (3.2 MB)
+     |████████████████████████████████| 3.2 MB 1.3 MB/s
+Installing collected packages: pillow
+Successfully installed pillow-8.3.2
+
+5. Деактивировать виртуальное окружение.
+(lesson_04_virt) d:\My_Python>deactivate
+d:\My_Python>
