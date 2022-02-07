@@ -17,6 +17,7 @@ def currency_rates(code: str):
     result_value = round(value / nominal, 4)
     return result_value
 
+
 if __name__ == '__main__':
     print(currency_rates("USD"))
     print(currency_rates("eur"))
