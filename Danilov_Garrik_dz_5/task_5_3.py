@@ -1,23 +1,22 @@
 # Задание 3
 
-tutors = ['Иван', 'Анастасия', 'Петр',
-          'Сергей', 'Дмитрий', 'Борис', 'Елена', 'Мария', 'Ольга'
-          ]
+tutors = ['Иван', 'Анастасия', 'Петр', 'Сергей', 'Дмитрий', 'Борис', 'Елена']
 
-klasses = ['9А', '7В', '9Б', '9В', '8Б', '10А',
-           '10Б', '9А'
-           ]
+klasses = ['9А', '7В', '9Б', '9В', '8Б', '10А', '10Б', '9А']
 
 
 def check_gen(tutors, klasses):
     if len(tutors) == len(klasses):
-        for tutor, klass in zip(tutors, klasses):
-            yield tutor, klass
+        return ((tutor, klass) for tutor, klass in zip(tutors, klasses))
     else:
-        max_index = min(len(tutors), len(klasses))
-        dict_tutor = {tutor: klass for tutor, klass in zip(tutors[:max_index], klasses[:max_index])}
+        len_klasses = len(klasses)
+        index = 0
         for tutor in tutors:
-            yield tutor, dict_tutor.get(tutor)
+            if index < len_klasses:
+                yield tutor, klasses[index]
+                index += 1
+            else:
+                yield tutor, None
 
 
 generator = check_gen(tutors, klasses)
