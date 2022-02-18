@@ -12,9 +12,14 @@ def make_dir(dir_path, dir_content):
         os.mkdir(dir_path)
     if isinstance(dir_content, list):
         for f_name in dir_content:
-            f_path = os.path.join(dir_path, f_name)
-            if not os.path.exists(f_path):
-                open(f_path, 'w').close()
+            if isinstance(f_name, str):
+                f_path = os.path.join(dir_path, f_name)
+                if not os.path.exists(f_path):
+                    open(f_path, 'w').close()
+            else:
+                for names_dirs, content in f_name.items():
+                    new_dir = os.path.join(dir_path, names_dirs)
+                    make_dir(new_dir, content)
     elif isinstance(dir_content, dict):
         for names_dirs, content in dir_content.items():
             new_dir = os.path.join(dir_path, names_dirs)
@@ -44,6 +49,8 @@ def main(argv):
         if input('Создать заново (текущая директория и вложенные файлы и папки будут удалены) Y/N: ') == 'Y':
             shutil.rmtree(main_dir)
             os.mkdir(main_dir)
+        elif input('Создать с сохранением текущих файлов и папок Y/N: ') == 'Y':
+            pass
         else:
             return 1
     except OSError as other_err:
