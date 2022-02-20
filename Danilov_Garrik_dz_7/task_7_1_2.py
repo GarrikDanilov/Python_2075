@@ -29,15 +29,16 @@ def make_dir(dir_path, dir_content):
 def main(argv):
     """
     Принимает в качестве аргумента путь к файлу со структурой проекта
-    и создает в дириктории с указанным файлом заготовку проекта в соответствии
+    и создает в папке с указанным файлом заготовку проекта в соответствии
     со структурой, указанной в файле
+
     :param argv: путь к файлу со структурой проекта
-    :return: директория со структурой проекта
+    :return: папка со структурой проекта
     """
     try:
         with open(argv[1], 'r', encoding='utf-8') as fr:
             prj_config = json.load(fr)
-            prj_root, _ = os.path.split(argv[1])
+            prj_root = os.path.dirname(argv[1])
             name_main_dir = list(prj_config.keys())[0]
             main_dir = os.path.join(prj_root, name_main_dir)
             os.mkdir(main_dir)
