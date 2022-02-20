@@ -1,0 +1,8 @@
+{
+  "my_project": {
+    "settings": null,
+    "mainapp": null,
+    "adminapp": null,
+    "authapp": null
+  }
+}
