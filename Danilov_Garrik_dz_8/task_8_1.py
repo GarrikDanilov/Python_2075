@@ -9,7 +9,8 @@ def email_parse(email: str) -> dict:
         :param email: строковое входное значение обрабатываемого email
         :return: {'username': <значение до символа @>, 'domain': <значение за символом @>} | ValueError
         """
-    RE_MAIL = re.compile(r'^(?P<username>[^\s]+)@(?P<domain>[^\s]+\.[^\s]+)$', re.IGNORECASE)
+    RE_MAIL = re.compile(r"^(?P<username>\w[\w!#$%&'*+/=?^_`{|}~-]*\w)@(?P<domain>\w[\w-]*\w\.\w+)$",
+                         re.IGNORECASE|re.ASCII)
     msg = f'wrong email: {email}'
     match_email = RE_MAIL.match(email)
     if not match_email:
