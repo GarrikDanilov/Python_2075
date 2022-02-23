@@ -1,3 +1,5 @@
+# Задание 4
+
 from functools import wraps
 
 
