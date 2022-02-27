@@ -11,33 +11,33 @@ class Cell:
         list_str.append(self.cells % number * '*')
         return "\n".join(list_str)
 
-    def __add__(self, other):
-        if isinstance(self, Cell) and isinstance(other, Cell):
-            return Cell(self.cells + other.cells)
-        else:
+    def __not_used(self):
+        pass
+
+    def __check_args(self, other):
+        self.__not_used()
+        if not isinstance(other, Cell):
             raise TypeError('действие допустимо только для экземпляров того же класса')
+
+    def __add__(self, other):
+        self.__check_args(other)
+        return Cell(self.cells + other.cells)
 
     def __sub__(self, other):
-        if isinstance(self, Cell) and isinstance(other, Cell):
-            result = self.cells - other.cells
-            if result > 0:
-                return Cell(result)
-            else:
-                raise ValueError('недопустимая операция')
+        self.__check_args(other)
+        result = self.cells - other.cells
+        if result > 0:
+            return Cell(result)
         else:
-            raise TypeError('действие допустимо только для экземпляров того же класса')
+            raise ValueError('недопустимая операция')
 
     def __mul__(self, other):
-        if isinstance(self, Cell) and isinstance(other, Cell):
-            return Cell(self.cells * other.cells)
-        else:
-            raise TypeError('действие допустимо только для экземпляров того же класса')
+        self.__check_args(other)
+        return Cell(self.cells * other.cells)
 
     def __truediv__(self, other):
-        if isinstance(self, Cell) and isinstance(other, Cell):
-            return Cell(self.cells // other.cells)
-        else:
-            raise TypeError('действие допустимо только для экземпляров того же класса')
+        self.__check_args(other)
+        return Cell(self.cells // other.cells)
 
     def __floordiv__(self, other):
         return self / other

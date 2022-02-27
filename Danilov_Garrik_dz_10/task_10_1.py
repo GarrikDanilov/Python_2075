@@ -12,8 +12,7 @@ class Matrix:
         self.matrix = matrix
 
     def __str__(self):
-        list_row = [f'| {" ".join(map(str, row))} |' for row in self.matrix]
-        return "\n".join(list_row)
+        return "\n".join([f'| {" ".join(map(str, row))} |' for row in self.matrix])
 
     def __add__(self, other):
         if len(self.matrix) != len(other.matrix) or len(self.matrix[0]) != len(other.matrix[0]):
