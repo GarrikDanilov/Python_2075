@@ -22,11 +22,8 @@ class MyDate:
 
     @classmethod
     def date_pars(cls, date: str):
-        date_in = MyDate.__check_date(date)
-        if date_in:
-            return date_in.day, date_in.month, date_in.year
-        else:
-            raise ValueError('Введена некорректная дата')
+        date_in = cls(date)
+        return date_in.date.day, date_in.date.month, date_in.date.year
 
 
 if __name__ == '__main__':
